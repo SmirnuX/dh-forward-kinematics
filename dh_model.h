@@ -1,9 +1,9 @@
 #ifndef DH_MODEL_H
 #define DH_MODEL_H
 
-#define N 6
+#define N 6 //Number of nodes of manipulator
 
-//DH parameters of manioulator
+//DH parameters of manipulator
 extern double a_m[N];
 extern double d_m[N];
 extern double alpha_rad[N];

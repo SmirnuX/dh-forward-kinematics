@@ -11,14 +11,14 @@ double** create_4d_matrix()
     return result;
 }
 
-void free_4d_matrix(double** mx)
+void delete_4d_matrix(double** mx)
 {
     for (int i = 0; i < 4; i++)
         free(mx[i]);
     free(mx);
 }
 
-double** mx_multiply(double** mx1, double** mx2)
+double** mx_4d_multiply(double** mx1, double** mx2)
 {
     double** result = create_4d_matrix();
 

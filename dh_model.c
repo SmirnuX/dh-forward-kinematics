@@ -2,7 +2,7 @@
 #include "matrix.h"
 #include "math.h"
 
-
+//DH parameters
 double a_m[N] = {0.0, -0.8, -0.598, 0.0, 0.0, 0.0};
 double d_m[N] = {0.21, 0.193, -0.16, 0.25, 0.25, 0.25};
 double alpha_rad[N] = {M_PI/2, 0.0, 0.0, M_PI/2, -M_PI/2, 0.0};
@@ -12,6 +12,7 @@ double degtorad(double degrees)
     return M_PI * degrees / 180;
 }
 
+//Calculate transformation matrix for node with provided parameters
 double** calculate_relation(double theta, double a, double d, double alpha)
 {
     double cost = cos(theta);
