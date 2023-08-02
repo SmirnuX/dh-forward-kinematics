@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
     for (int i = 1; i < N; i++)
     {
         double** next_rel = calculate_relation(degtorad(theta_deg[i]), a_m[i], d_m[i], alpha_rad[i]);
-        double** next_link = mx_4d_multiply(result, next_rel);
+        double** next_link = mulptiply_4d_matrix(result, next_rel);
         delete_4d_matrix(next_rel);
         delete_4d_matrix(result);
         result = next_link;
