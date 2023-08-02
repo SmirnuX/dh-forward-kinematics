@@ -21,6 +21,8 @@ double* get_from_file(char* fname)
         }
     }
 
+    fclose(file);
+
     return result;
 }
 
