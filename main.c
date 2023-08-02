@@ -26,7 +26,6 @@ double* get_from_file(char* fname)
 
 int main(int argc, char* argv[])
 {
-
     double* theta_deg = NULL;
     if (argc < 2)
         theta_deg = get_from_file("input.txt");
@@ -42,15 +41,19 @@ int main(int argc, char* argv[])
         return errno;
     }
 
-    double** result = calculate_relation(degtorad(theta_deg[0]), a_m[0], d_m[0], alpha_rad[0]);
+    double** result = create_4d_matrix();
+    double** transform_mx = create_4d_matrix();
+    double** temp_result = create_4d_matrix();
+    calculate_relation(result, degtorad(theta_deg[0]), a_m[0], d_m[0], alpha_rad[0]);
 
     for (int i = 1; i < N; i++)
     {
-        double** next_rel = calculate_relation(degtorad(theta_deg[i]), a_m[i], d_m[i], alpha_rad[i]);
-        double** next_link = mulptiply_4d_matrix(result, next_rel);
-        delete_4d_matrix(next_rel);
-        delete_4d_matrix(result);
-        result = next_link;
+        calculate_relation(transform_mx, degtorad(theta_deg[i]), a_m[i], d_m[i], alpha_rad[i]);
+        mulptiply_4d_matrix(temp_result, result, transform_mx);
+
+        double** tmp = result; 
+        result = temp_result;
+        temp_result = tmp;
     }
 
     for (int i = 0; i < 4; i++)
@@ -66,5 +69,8 @@ int main(int argc, char* argv[])
 
     free(theta_deg);
     delete_4d_matrix(result);
+    delete_4d_matrix(transform_mx);
+    delete_4d_matrix(temp_result);
+
     return 0;
 }

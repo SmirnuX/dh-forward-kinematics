@@ -10,6 +10,6 @@ extern double alpha_rad[N];
 
 double degtorad(double degrees);
 
-double** calculate_relation(double theta, double a, double d, double alpha);
+void calculate_relation(double** result, double theta, double a, double d, double alpha);
 
 #endif

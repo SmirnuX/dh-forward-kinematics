@@ -11,10 +11,9 @@ double** create_4d_matrix()
     return result;
 }
 
-double** mulptiply_4d_matrix(double** mx1, double** mx2)
+void** mulptiply_4d_matrix(double** result, double** mx1, double** mx2)
+//Multiply matrices "mx1" and "mx2", and store outcome in "result"
 {
-    double** result = create_4d_matrix();
-
     for(int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
@@ -24,8 +23,6 @@ double** mulptiply_4d_matrix(double** mx1, double** mx2)
                 result[i][j] += mx1[i][k] * mx2[k][j];
         }
     }
-
-    return result;
 }
 
 void delete_4d_matrix(double** mx)

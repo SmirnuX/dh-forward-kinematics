@@ -12,15 +12,14 @@ double degtorad(double degrees)
     return M_PI * degrees / 180;
 }
 
-//Calculate transformation matrix for node with provided parameters
-double** calculate_relation(double theta, double a, double d, double alpha)
+void calculate_relation(double** result, double theta, double a, double d, double alpha)
+//Calculate transformation matrix for node with provided parameters, and store outcome in "result"
 {
     double cost = cos(theta);
     double sint = sin(theta);
     double cosa = cos(alpha);
     double sina = sin(alpha);
 
-    double** result = create_4d_matrix();
     result[0][0] = cost;
     result[0][1] = - sint * cosa;
     result[0][2] = sint * sina;
@@ -40,6 +39,4 @@ double** calculate_relation(double theta, double a, double d, double alpha)
     result[3][1] = 0.0;
     result[3][2] = 0.0;
     result[3][3] = 1.0;
-
-    return result;
 }
